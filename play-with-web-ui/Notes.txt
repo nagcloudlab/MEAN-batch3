@@ -1,0 +1,89 @@
+
+
+
+UI = data + style 
+dynamic UI = data + style + interactivity
+
+static Web UI = html + css
+dynamic Web We-UI = html + css + javascript
+
+------------------------------------------
+
+javascript with browser's Apis, 
+can get dynamic-activity to page.
+
+browser's apis, w3c recommendations
+e.g DOM, Timer , XHR ...
+
+https://developer.mozilla.org/en-US/docs/Web/API
+
+------------------------------------------
+
+DOM 
+----
+    -> can work with HTML element(s)
+Timer Api
+--------
+    -> Timer Actions
+XHR
+----
+    -> http calls to backend-app
+
+--------------------------------------------
+
+Front-End Developer skills
+   => HTML + CSS + javascript + browser-apis
+--------------------------------------------    
+
+
+challenges while working browser's api(s)
+with plain-javascript ( your-code )
+
+    -> browser compatability issues
+    -> performance issues (  DOM foot-print should minimal)
+    -> memory issues ( clean un-used DOM elements )
+    -> too-much code
+    -> code-reusability issues
+    ....
+
+legacy solution:
+
+    -> using server-side page technologies
+
+        -> jsp,asp,php,....
+
+modern solution:
+
+    -> browser-side page technologies
+
+        i.e using third-party's javascript lib / framework
+
+
+javascript lib/frameworks
+------------------------------
+
+1. jquery
+
+   -> DOM & XHR utility lib 
+
+MVC ( Model View Controller ) based lib/f.w
+--------------------------------------------
+
+2. knockout.js
+3. backbone.js
+4. ember.js
+5. dojo
+6. ext.js from sencha ( commercial )
+7. angular.js from google-team
+..
+
+component pattern
+----------------
+
+1. React.js from face-book team #1
+1.1 React.js with Next 
+2. Angular from google-team ( our-focus ) #2
+3. Vue.js #3
+..
+
+-----------------------------
