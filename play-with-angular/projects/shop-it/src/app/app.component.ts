@@ -11,12 +11,28 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title: string = 'shop-IT-v1';
-  product: any = {
-    id: 1,
-    name: "Laptop",
-    price: 1000.00,
-    description: "Laptop description",
-    imagePath: 'assets/Laptop.png'
+  currentTab = 1;
+  products: Array<any> = [
+    {
+      id: 1,
+      name: "Laptop",
+      price: 3000.00,
+      description: "Laptop description",
+      imagePath: 'assets/Laptop.png'
+    },
+    {
+      id: 2,
+      name: "Mobile",
+      price: 2000.00,
+      description: "Mobile description",
+      imagePath: 'assets/Mobile.png'
+    },
+  ]
+  isTabSelected(tabIndex: number): boolean {
+    return this.currentTab === tabIndex
+  }
+  handleTabChange(tabIndex: number) {
+    this.currentTab = tabIndex
   }
   handleBuy(event: MouseEvent) {
     console.log(event);
