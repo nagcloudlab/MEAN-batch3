@@ -1,40 +1,35 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
+import { NavbarComponent } from './navbar/navbar.component';
+import { ProductListComponent } from './product-list/product-list.component';
+import { CartBadgeComponent } from './cart-badge/cart-badge.component';
+import { CartViewComponent } from './cart-view/cart-view.component';
+import { NttCardComponent } from './ntt-card/ntt-card.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet],
+  imports: [
+    CommonModule,
+    RouterOutlet,
+    NavbarComponent,
+    ProductListComponent,
+    CartBadgeComponent,
+    CartViewComponent,
+    NttCardComponent,
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
   title: string = 'shop-IT-v1';
-  currentTab = 1;
-  products: Array<any> = [
-    {
-      id: 1,
-      name: "Laptop",
-      price: 3000.00,
-      description: "Laptop description",
-      imagePath: 'assets/Laptop.png'
-    },
-    {
-      id: 2,
-      name: "Mobile",
-      price: 2000.00,
-      description: "Mobile description",
-      imagePath: 'assets/Mobile.png'
-    },
-  ]
-  isTabSelected(tabIndex: number): boolean {
-    return this.currentTab === tabIndex
+  cart: Array<any> = []
+  isCartOpen: boolean = false
+  toggleCartView() {
+    this.isCartOpen = !this.isCartOpen
   }
-  handleTabChange(tabIndex: number) {
-    this.currentTab = tabIndex
-  }
-  handleBuy(event: MouseEvent) {
-    console.log(event);
+  addToCart(cartLine: any) {
+    this.cart = this.cart.concat(cartLine)
   }
 }

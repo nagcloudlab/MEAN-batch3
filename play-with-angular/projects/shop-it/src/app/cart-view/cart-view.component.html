@@ -1,0 +1,17 @@
+<div class="card">
+    <div #cartHeader appHighlight class="card-header">Cart View</div>
+    <div class="card-body">
+        <table class="table">
+            <tbody>
+                <tr *ngFor="let cartLine of cart">
+                    <td>{{cartLine.id}}</td>
+                    <td>{{cartLine.name}}</td>
+                    <td>{{cartLine.price}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="card-footer">
+        {{timeNow}}
+    </div>
+</div>
