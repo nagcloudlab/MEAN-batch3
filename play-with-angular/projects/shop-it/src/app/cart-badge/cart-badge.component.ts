@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { CartService } from '../cart.service';
 
 @Component({
   selector: 'app-cart-badge',
@@ -10,7 +11,18 @@ import { CommonModule } from '@angular/common';
 })
 export class CartBadgeComponent {
 
-  @Input()
+  //@Input()
   cart: Array<any> = []
+
+  constructor(private cartService: CartService) { }
+
+  ngOnInit() {
+    this.cartService.getCartStream()
+      .subscribe({
+        next: (cart: Array<any>) => {
+          this.cart = cart
+        }
+      })
+  }
 
 }

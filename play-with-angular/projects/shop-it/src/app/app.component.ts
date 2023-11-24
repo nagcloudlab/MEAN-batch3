@@ -24,12 +24,9 @@ import { NttCardComponent } from './ntt-card/ntt-card.component';
 })
 export class AppComponent {
   title: string = 'shop-IT-v1';
-  cart: Array<any> = []
   isCartOpen: boolean = false
   toggleCartView() {
     this.isCartOpen = !this.isCartOpen
   }
-  addToCart(cartLine: any) {
-    this.cart = this.cart.concat(cartLine)
-  }
+
 }

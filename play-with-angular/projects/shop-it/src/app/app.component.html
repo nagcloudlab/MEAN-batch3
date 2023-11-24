@@ -1,9 +1,8 @@
 <div class="container">
   <app-navbar [title]="title"></app-navbar>
-  <app-cart-badge [cart]="cart"></app-cart-badge>
   <button class="btn btn-sm btn-danger" (click)="toggleCartView()">toggle-cart</button>
   <br />
-  <app-cart-view *ngIf="isCartOpen" [cart]="cart"></app-cart-view>
+  <app-cart-view *ngIf="isCartOpen"></app-cart-view>
   <br />
-  <app-product-list (buy)="addToCart($event)"></app-product-list>
+  <app-product-list></app-product-list>
 </div>

@@ -2,6 +2,9 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReviewComponent } from '../review/review.component';
 import { HighlightDirective } from '../highlight.directive';
+import { DiscountPipe } from '../discount.pipe';
+import { CartService } from '../cart.service';
+import { ProductsService } from '../products.service';
 
 @Component({
   selector: 'app-product',
@@ -9,7 +12,8 @@ import { HighlightDirective } from '../highlight.directive';
   imports: [
     CommonModule,
     ReviewComponent,
-    HighlightDirective
+    HighlightDirective,
+    DiscountPipe
   ],
   templateUrl: './product.component.html',
   styleUrl: './product.component.css'
@@ -19,13 +23,12 @@ export class ProductComponent {
   @Input("value")
   product!: any
 
-  @Output()
-  buy = new EventEmitter()
+  constructor(
+    private cartService: CartService,
+    private productsService: ProductsService
+  ) { }
 
-  reviews: Array<any> = [
-    { stars: 5, author: 'who-1', body: 'sample-review-1' },
-    { stars: 1, author: 'who-2', body: 'sample-review-2' }
-  ]
+  reviews: Array<any> = []
 
   currentTab = 1;
   isTabSelected(tabIndex: number): boolean {
@@ -33,9 +36,16 @@ export class ProductComponent {
   }
   handleTabChange(tabIndex: number) {
     this.currentTab = tabIndex
+    if (this.currentTab === 3) {
+      this.reviews = this.productsService.getReviews(this.product.id)
+    }
   }
   handleBuy(event: MouseEvent) {
-    this.buy.emit({ id: this.product.id, name: this.product.name, price: this.product.price })
+    this.cartService.addToCart({
+      id: this.product.id,
+      name: this.product.name,
+      price: this.product.price
+    })
   }
 
 }

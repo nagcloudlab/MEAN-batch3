@@ -1,6 +1,7 @@
 import { Component, ElementRef, Input, SimpleChanges, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HighlightDirective } from '../highlight.directive';
+import { CartService } from '../cart.service';
 
 @Component({
   selector: 'app-cart-view',
@@ -11,16 +12,18 @@ import { HighlightDirective } from '../highlight.directive';
 })
 export class CartViewComponent {
 
-  @Input()
   cart!: Array<any>
 
   @ViewChild("cartHeader")
   cartHeader!: ElementRef
 
-  timeNow!: string
-  intervalId!: any
+  subscriber!: any;
 
-  constructor() {
+  // timeNow!: string
+  // intervalId!: any
+
+
+  constructor(private cartService: CartService) {
     console.log("CartViewComponent::constructor()");
     // console.log(this.cart);
     // why we need?
@@ -41,17 +44,25 @@ export class CartViewComponent {
     // why we need ?
     // todo any one-time intialization
     // e.g subscribing with observable-streams, start-timer
-    this.intervalId = setInterval(() => {
-      console.log("tick");
-      this.timeNow = new Date().toLocaleTimeString()
-    }, 1000);
+    // this.intervalId = setInterval(() => {
+    //   console.log("tick");
+    //   this.timeNow = new Date().toLocaleTimeString()
+    // }, 1000);
+    //this.cart = this.cartService.getCart();
+    this.subscriber = this.cartService.getCartStream()
+      .subscribe({
+        next: (cart: Array<any>) => {
+          this.cart = cart
+        }
+      })
   }
 
   ngOnDestroy() {
     console.log("CartViewComponent::ngOnDestroy()");
     // why we need?
     // to cleanup actions
-    clearInterval(this.intervalId)
+    // clearInterval(this.intervalId)
+    this.subscriber.unsubscribe()
   }
 
   ngAfterViewInit() {

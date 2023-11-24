@@ -1,4 +1,6 @@
-<div class="card">
+<div *ngIf="cart.length===0">cart empty</div>
+
+<div class="card" *ngIf="cart.length!==0">
     <div #cartHeader appHighlight class="card-header">Cart View</div>
     <div class="card-body">
         <table class="table">
@@ -6,12 +8,12 @@
                 <tr *ngFor="let cartLine of cart">
                     <td>{{cartLine.id}}</td>
                     <td>{{cartLine.name}}</td>
-                    <td>{{cartLine.price}}</td>
+                    <td>{{cartLine.price|currency:'INR'}}</td>
                 </tr>
             </tbody>
         </table>
     </div>
-    <div class="card-footer">
-        {{timeNow}}
-    </div>
+    <!-- <div class="card-footer"> -->
+    <!-- {{timeNow}} -->
+    <!-- </div> -->
 </div>
