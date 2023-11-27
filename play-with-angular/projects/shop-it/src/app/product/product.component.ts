@@ -5,6 +5,8 @@ import { HighlightDirective } from '../highlight.directive';
 import { DiscountPipe } from '../discount.pipe';
 import { CartService } from '../cart.service';
 import { ProductsService } from '../products.service';
+import { ReviewFormComponent } from '../review-form/review-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-product',
@@ -12,8 +14,9 @@ import { ProductsService } from '../products.service';
   imports: [
     CommonModule,
     ReviewComponent,
+    ReviewFormComponent,
     HighlightDirective,
-    DiscountPipe
+    DiscountPipe,
   ],
   templateUrl: './product.component.html',
   styleUrl: './product.component.css'
@@ -46,6 +49,10 @@ export class ProductComponent {
       name: this.product.name,
       price: this.product.price
     })
+  }
+  handleNewReview(event: any) {
+    let { formData } = event;
+    this.productsService.addNewReview(this.product.id, formData)
   }
 
 }
