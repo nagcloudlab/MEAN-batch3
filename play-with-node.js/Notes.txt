@@ -1,0 +1,14 @@
+
+Node.js
+
+    - javascript runtime
+    - defaults async/non-blocking IO
+    - based on event-driven model
+
+Node.js come with low-level modules ( fs , http,...)    
+with them building production ready server applications need much work
+
+solution:
+    => choose best framework
+
+        e.g Express.js 
