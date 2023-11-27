@@ -13,6 +13,8 @@ export class ReviewFormComponent {
 
   reviewForm!: FormGroup
 
+  isOpen = false
+
   @Output()
   newReview = new EventEmitter();
 
@@ -26,10 +28,15 @@ export class ReviewFormComponent {
     })
   }
 
+  handleFormOpen() {
+    this.isOpen = !this.isOpen
+  }
+
   handleSubmit(event: SubmitEvent) {
     event.preventDefault();
     if (this.reviewForm.valid) {
       this.newReview.emit({ formData: this.reviewForm.value })
+      this.handleFormOpen()
     }
   }
 

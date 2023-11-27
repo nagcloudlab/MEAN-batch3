@@ -1,5 +1,7 @@
 <div *ngIf="cart.length===0">cart empty</div>
 
+<button (click)="handleBack()">products</button>
+<br />
 <div class="card" *ngIf="cart.length!==0">
     <div #cartHeader appHighlight class="card-header">Cart View</div>
     <div class="card-body">
@@ -16,4 +18,5 @@
     <!-- <div class="card-footer"> -->
     <!-- {{timeNow}} -->
     <!-- </div> -->
+
 </div>

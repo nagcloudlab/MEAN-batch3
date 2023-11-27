@@ -37,7 +37,8 @@ export class ProductComponent {
   isTabSelected(tabIndex: number): boolean {
     return this.currentTab === tabIndex
   }
-  handleTabChange(tabIndex: number) {
+  handleTabChange(tabIndex: number, event: MouseEvent) {
+    event.preventDefault();
     this.currentTab = tabIndex
     if (this.currentTab === 3) {
       this.reviews = this.productsService.getReviews(this.product.id)

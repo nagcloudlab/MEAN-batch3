@@ -2,6 +2,7 @@ import { Component, ElementRef, Input, SimpleChanges, ViewChild } from '@angular
 import { CommonModule } from '@angular/common';
 import { HighlightDirective } from '../highlight.directive';
 import { CartService } from '../cart.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart-view',
@@ -23,7 +24,9 @@ export class CartViewComponent {
   // intervalId!: any
 
 
-  constructor(private cartService: CartService) {
+  constructor(
+    private cartService: CartService,
+    private router: Router) {
     console.log("CartViewComponent::constructor()");
     // console.log(this.cart);
     // why we need?
@@ -76,6 +79,10 @@ export class CartViewComponent {
     // cartHeaderNativeEle.addEventListener('mouseleave', (e: any) => {
     //   cartHeaderNativeEle.style.backgroundColor = "";
     // })
+  }
+
+  handleBack() {
+    this.router.navigate(['/products'])
   }
 
 }
