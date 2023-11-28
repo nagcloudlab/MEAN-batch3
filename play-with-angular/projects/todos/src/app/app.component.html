@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="display-1">todos</div>
+  <hr />
+  <div class="card card-body">
+    <input (keyup)="handleKeyUp($event)" class="form-control" placeholder="Whats need to be done?" />
+  </div>
+  <div class="card card-body mt-3">
+    <table class="table">
+      <tbody>
+        <tr *ngFor="let todo of todos">
+          <td>{{todo.id}}</td>
+          <td>{{todo.title}}</td>
+          <td>{{todo.completed}}</td>
+          <td><button (click)="handleDelete(todo.id)" class="btn btn-sm btn-danger">delete</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

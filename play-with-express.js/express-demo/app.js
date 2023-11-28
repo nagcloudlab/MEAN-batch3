@@ -1,12 +1,9 @@
 
 
-
-//----------------------------------------------------------------
-// using FileSystem , Http
-//-------------------------------------------------------------
-
-
 const express = require('express')
+const logger = require('./middlewares/logger')
+const morgan = require('morgan')
+const todos = require('./routes/todos')
 
 const app = express();
 
@@ -20,19 +17,10 @@ const app = express();
 //     res.sendFile(__dirname + "/public/images/todos.png")
 // });
 
+// app.use(logger);
+app.use(morgan(':method :url :status :res[content-length] - :response-time ms'));
 app.use(express.static(__dirname + "/public"))
-app.get('/todos', (req, res, next) => {
-    const todos = [
-        { id: 1, title: 'Todo 1', completed: false },
-        { id: 2, title: 'Todo 2', completed: true },
-        { id: 3, title: 'Todo-3', completed: false },
-        { id: 4, title: 'Todo-4', completed: false },
-        { id: 5, title: 'Todo-5', completed: false },
-    ]
-    res.json(todos)
-})
-
-
+app.use("/todos", todos)
 app.listen(3000, function () {
     console.log("server listening on http://localhost:3000");
 });
