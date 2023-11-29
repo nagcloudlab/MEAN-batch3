@@ -6,6 +6,7 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { CartBadgeComponent } from './cart-badge/cart-badge.component';
 import { CartViewComponent } from './cart-view/cart-view.component';
 import { NttCardComponent } from './ntt-card/ntt-card.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',

@@ -1,0 +1,20 @@
+
+step-1: Resource identification in requests
+
+        /api/v1/products
+        /api/v1/products/{productId}
+        /api/v1/products/{productId}/reviews
+        /api/v1/products/{productId}/reviews/{reviewId}
+
+step-2: Resource manipulation through representations
+
+        GET /api/v1/products
+        GET /api/v1/products/{productId}
+        GET /api/v1/products/{productId}/reviews
+        POST /api/v1/products/{productId}/reviews
+        DELETE /api/v1/products/{productId}/reviews/{reviewId}
+
+step-3: Self-descriptive messages        
+
+        Content-Type: application/json
+        Accept : application/json

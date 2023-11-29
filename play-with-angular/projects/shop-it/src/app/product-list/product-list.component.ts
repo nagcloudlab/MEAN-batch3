@@ -11,17 +11,24 @@ import { ProductsService } from '../products.service';
     ProductComponent
   ],
   templateUrl: './product-list.component.html',
-  styleUrl: './product-list.component.css'
+  styleUrl: './product-list.component.css',
+  providers: [
+    //ProductsService
+  ]
 })
 export class ProductListComponent {
-
 
 
   products: Array<any> = []
   constructor(private productsService: ProductsService) { }
 
   ngOnInit() {
-    this.products = this.productsService.getProducts()
+    this.productsService.getProducts()
+      .subscribe({
+        next: (products: Array<any>) => {
+          this.products = products
+        }
+      })
   }
 
 }

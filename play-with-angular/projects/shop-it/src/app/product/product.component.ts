@@ -41,7 +41,12 @@ export class ProductComponent {
     event.preventDefault();
     this.currentTab = tabIndex
     if (this.currentTab === 3) {
-      this.reviews = this.productsService.getReviews(this.product.id)
+      this.productsService.getReviews(this.product.id)
+        .subscribe({
+          next: (reviews: Array<any>) => {
+            this.reviews = reviews
+          }
+        })
     }
   }
   handleBuy(event: MouseEvent) {
@@ -54,6 +59,11 @@ export class ProductComponent {
   handleNewReview(event: any) {
     let { formData } = event;
     this.productsService.addNewReview(this.product.id, formData)
+      .subscribe({
+        next: (review: any) => {
+          this.reviews.unshift(review)
+        }
+      })
   }
 
 }
