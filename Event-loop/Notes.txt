@@ -1,0 +1,29 @@
+
+
+
+Java language
+
+    - single-thread process, 
+      but can execute certain actions concurrently
+    - by default all IO operations are asynchronous ( non-blocking)
+
+----------------------------------------------------------------
+Browser-Environment
+----------------------------------------------------------------
+
+Browser Architecture ( e.g chrome)
+
+    - JavaScript Engine ( v8 - c++)  ( based on ECMAScript spec)
+        a. stack
+        b. heap
+    - Web Apis ( DOM, XHR/Fetch , Timer, ....)  ( based on w3c recommendations)
+    - event/message/callback-queue    
+    - event-loop
+
+----------------------------------------------------------------    
+Node.js Environment
+----------------------------------------------------------------
+
+https://github.com/danielmapar/NodeJSAdvancedConcepts
+
+
