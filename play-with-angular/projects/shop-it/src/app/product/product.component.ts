@@ -41,7 +41,7 @@ export class ProductComponent {
     event.preventDefault();
     this.currentTab = tabIndex
     if (this.currentTab === 3) {
-      this.productsService.getReviews(this.product.id)
+      this.productsService.getReviews(this.product._id)
         .subscribe({
           next: (reviews: Array<any>) => {
             this.reviews = reviews
@@ -58,7 +58,7 @@ export class ProductComponent {
   }
   handleNewReview(event: any) {
     let { formData } = event;
-    this.productsService.addNewReview(this.product.id, formData)
+    this.productsService.addNewReview(this.product._id, formData)
       .subscribe({
         next: (review: any) => {
           this.reviews.unshift(review)

@@ -1,0 +1,65 @@
+
+
+
+db.products.insertOne({
+    _id: 1,
+    name: "Laptop",
+    price: 100,
+    description: "laptop description",
+    tags: ["elec","laptop","apple"],
+    specification:{
+        memory: "32gb",
+        cpu: 16
+    },
+    makeDate: new Date(),
+    imagePath:"assets/Laptop.png"
+})
+
+db.products.insertOne({
+    _id: 2,
+    name: "Mobile",
+    price: 100,
+    description: "mobile description",
+    tags: ["elec","mobile","apple"],
+    specification:{
+        memory: "2gb",
+        cpu: 4
+    },
+    makeDate: new Date(),
+    imagePath:"assets/Mobile.png"
+})
+
+
+db.reviews.insertMany([
+    {
+        stars:5,
+        body:"sample review-1",
+        author:"who-1",
+        product_id:1,
+    },
+    {
+        stars:2,
+        body:"sample review-2",
+        author:"who-2",
+        product_id:1,
+    },
+    {
+        stars:5,
+        body:"sample review-1",
+        author:"who-1",
+        product_id:2,
+    },
+    {
+        stars:2,
+        body:"sample review-2",
+        author:"who-2",
+        product_id:2,
+    },
+    {
+        stars:2,
+        body:"sample review-3",
+        author:"who-2",
+        product_id:2,
+    },
+    
+])

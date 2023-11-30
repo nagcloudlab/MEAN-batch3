@@ -4,7 +4,7 @@
         <img class="img-fluid" alt="product-image" [src]="product.imagePath" />
     </div>
     <div class="col-8">
-        <div>{{product.name|uppercase}} - {{product.makeTimeStamp|date:'yyyy'}}</div>
+        <div>{{product.name|uppercase}} - {{product.makeDate|date:'yyyy'}}</div>
         <div>{{product.price | discount | currency:product.currencyCode}}</div>
         <button (click)="handleBuy($event)" class="btn btn-primary">buy</button>
         <ul class="nav nav-tabs">
@@ -22,7 +22,9 @@
             </li>
         </ul>
         <div *ngIf="isTabSelected(1)">{{product.description | slice:0:1000}}</div>
-        <div *ngIf="isTabSelected(2)">Not Yet</div>
+        <div *ngIf="isTabSelected(2)">
+            cpu(s)-{{product.specification.cpu}},memory-{{product.specification.memory}}
+        </div>
         <div *ngIf="isTabSelected(3)">
             <app-review-form (newReview)="handleNewReview($event)"></app-review-form>
             <br />
